@@ -15,8 +15,6 @@ From idea to deployment, I build fast, scalable web applications.
 2.5+ years taking products from zero to production — clean,
 maintainable, and built to last.
 
-Currently building a **Finance ERP & Accounts Treasury platform**
-in Angular 19 at ACE Money Transfer.
 
 ---
 
