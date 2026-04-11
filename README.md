@@ -45,34 +45,9 @@ in Angular 19 at ACE Money Transfer.
 
 ---
 
-## What I Have Shipped
-
-| Product | Stack | Type |
-|---|---|---|
-| **Accounts & Treasury Management System** | Angular 19, RxJs, Angular Material, PWA, i18n | Enterprise ERP — ACE Money Transfer |
-| **ACE Union** | React, Ant Design, Laravel, MySQL | Branding & FinTech Platform |
-| **AML Watcher** | Vue.js, Quasar, SASS | RegTech Compliance Toolkit |
-| **Recordly** | Vue.js, Vuetify, Chrome Extensions | AV Recording Management |
-| **AML Researcher Portal** | Vue.js, Quasar, Laravel | Compliance Analytics Dashboard |
-| **THE KYB Portal** | Vue.js, Node.js, Express | KYB Data Visualization |
-
----
-
-## GitHub Stats
-
-<div align="center">
-
-![Mirza's GitHub Stats](https://github-readme-stats.vercel.app/api?username=mirza-saeed&show_icons=true&theme=dark&hide_border=true&bg_color=2B2B2B&title_color=FFB199&icon_color=FFB199&text_color=ffffff)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=mirza-saeed&layout=compact&theme=dark&hide_border=true&bg_color=2B2B2B&title_color=FFB199&text_color=ffffff)
-
-</div>
-
----
 
 ## Currently
 
-- Building a Finance ERP in Angular 19 at ACE Money Transfer
 - Open to **remote freelance projects** and **full time remote roles**
 - Available for MVPs, legacy migrations, and enterprise web products
 
