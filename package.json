@@ -10,7 +10,7 @@
     "serve:ssr:portfolio": "node dist/portfolio/server/server.mjs",
     "build:gh-pages": "ng build --base-href ./ && node -e \"require('fs').copyFileSync('dist/portfolio/browser/index.html', 'dist/portfolio/browser/404.html')\"",
     "predeploy": "npm run build:gh-pages",
-    "deploy": "gh-pages -d dist/portfolio/browser -t true"
+    "deploy": "gh-pages -d dist/portfolio/browser -t --nojekyll"
   },
   "private": true,
   "packageManager": "npm@10.9.3",
