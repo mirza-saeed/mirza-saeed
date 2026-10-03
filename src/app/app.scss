@@ -1,0 +1,406 @@
+:host {
+  display: block;
+  min-height: 100vh;
+}
+
+.portfolio-container,
+.m3-shell-container {
+  min-height: 100vh;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--md-sys-color-background);
+}
+
+.portfolio-content,
+.m3-shell-content {
+  min-height: 100vh;
+  background-color: var(--md-sys-color-background);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+// ----------------------------------------------------
+// Desktop Viewport (> 768px)
+// ----------------------------------------------------
+.content-viewport {
+  margin-left: 88px;
+  width: calc(100% - 88px);
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: margin-left var(--md-duration-medium) var(--md-motion-spring),
+    width var(--md-duration-medium) var(--md-motion-spring);
+}
+
+.page-content {
+  width: 100%;
+  max-width: none;
+  padding: 40px 48px 80px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  box-sizing: border-box;
+}
+
+// Mobile Header Bar is hidden on desktop
+.mobile-header-bar,
+.m3-mobile-top-bar {
+  display: none;
+}
+
+// ----------------------------------------------------
+// M3 Expressive Navigation Drawer (<= 768px)
+// ----------------------------------------------------
+.m3-expressive-drawer,
+.m3-modal-drawer {
+  width: clamp(280px, 76vw, 320px);
+  background-color: var(--md-sys-color-surface-dim);
+  border-radius: 0 28px 28px 0;
+  border: none;
+  box-shadow: 4px 0 24px rgba(103, 80, 164, 0.08);
+  padding: 12px 12px 24px 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  .drawer-inner-shell,
+  .m3-drawer-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .drawer-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  // Pill Capsule Rows (56px)
+  .drawer-pill-item,
+  .drawer-item {
+    height: 56px;
+    min-height: 56px;
+    border-radius: 9999px;
+    padding: 0 20px;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+    color: #49454f;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    transition: background-color var(--md-duration-short) ease,
+      color var(--md-duration-short) ease;
+
+    .item-icon,
+    .drawer-item-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      color: inherit;
+    }
+
+    .item-title,
+    .drawer-item-label {
+      flex-grow: 1;
+    }
+
+    .item-arrow,
+    .drawer-item-trailing {
+      margin-left: auto;
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      color: #79747e;
+    }
+
+    &:hover:not(.active):not(.selected) {
+      background-color: var(--md-sys-color-surface-container);
+      color: var(--md-sys-color-on-surface);
+    }
+
+    &.active,
+    &.selected {
+      background-color: #e8def8;
+      color: #1d192b;
+      font-weight: 600;
+
+      .item-icon,
+      .drawer-item-icon {
+        color: #1d192b;
+      }
+
+      .item-arrow,
+      .drawer-item-trailing {
+        color: #1d192b;
+      }
+    }
+  }
+
+  // Bottom Utilities Controls (Pushed to bottom)
+  .drawer-footer-controls,
+  .drawer-bottom-actions {
+    margin-top: auto;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .drawer-capsule-button,
+  .capsule-btn {
+    height: 48px;
+    min-height: 48px;
+    border-radius: 9999px;
+    border: 1px solid #79747e;
+    background: transparent;
+    color: #1d192b;
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    transition: background-color var(--md-duration-short) ease,
+      border-color var(--md-duration-short) ease,
+      color var(--md-duration-short) ease,
+      transform var(--md-duration-short) var(--md-motion-spring);
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      color: inherit;
+    }
+
+    &:hover {
+      background-color: var(--md-sys-color-surface-container);
+      border-color: var(--md-sys-color-primary);
+      color: var(--md-sys-color-primary);
+
+      mat-icon {
+        color: var(--md-sys-color-primary);
+      }
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Tablet Breakpoint
+// ----------------------------------------------------
+@media (max-width: 1200px) {
+  .page-content {
+    padding: 32px 32px 72px 32px;
+    gap: 40px;
+  }
+}
+
+// ----------------------------------------------------
+// Mobile Breakpoint (<= 768px): Sticky Top App Bar & Drawer
+// ----------------------------------------------------
+@media (max-width: 768px) {
+  .content-viewport {
+    margin-left: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .page-content {
+    padding: 12px 16px 48px 16px;
+    gap: 32px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+  }
+
+  // M3 Mobile Header Bar (64px, sticky, z-index: 50)
+  .mobile-header-bar,
+  .m3-mobile-top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    min-height: 64px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    background: var(--md-sys-color-background);
+    z-index: 50;
+    padding: 0 16px;
+    border-bottom: 1px solid var(--md-sys-color-outline-ghost);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-sizing: border-box;
+
+    .header-icon-btn,
+    .icon-toggle-btn {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      min-height: 44px;
+      border: none;
+      background: #ece6f0;
+      border-radius: 9999px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: var(--md-sys-color-on-surface);
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: background-color var(--md-duration-short) ease,
+        transform var(--md-duration-short) var(--md-motion-spring);
+
+      mat-icon {
+        font-size: 24px;
+        width: 24px;
+        height: 24px;
+        display: grid;
+        place-items: center;
+      }
+
+      &:hover {
+        background-color: var(--md-sys-color-surface-container-high);
+        color: var(--md-sys-color-primary);
+      }
+
+      &:active {
+        transform: scale(0.92);
+      }
+    }
+
+    .header-monogram,
+    .top-bar-monogram {
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      background-color: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      border: 1.5px solid var(--md-sys-color-outline-variant);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: var(--md-sys-glow-subtle);
+      transition: transform var(--md-duration-short) var(--md-motion-spring),
+        box-shadow var(--md-duration-short) var(--md-motion-spring);
+
+      .monogram-text {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 14px;
+        letter-spacing: 0.5px;
+      }
+
+      &:hover {
+        transform: scale(1.06);
+        box-shadow: var(--md-sys-glow-primary);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Dark Theme Overrides for M3 Mobile Drawer & Top Bar
+// ----------------------------------------------------
+[data-theme='dark'] {
+  .mobile-header-bar,
+  .m3-mobile-top-bar {
+    .header-icon-btn,
+    .icon-toggle-btn {
+      background: #2b2930;
+      color: #e6e1e5;
+
+      &:hover {
+        background-color: #36343b;
+        color: #d0bcff;
+      }
+    }
+  }
+
+  .m3-expressive-drawer,
+  .m3-modal-drawer {
+    background-color: #141218 !important;
+
+    .drawer-pill-item,
+    .drawer-item {
+      color: #cac4d0;
+
+      .item-arrow,
+      .drawer-item-trailing {
+        color: #938f99;
+      }
+
+      &:hover:not(.active):not(.selected) {
+        background-color: #211f26;
+        color: #e6e1e5;
+      }
+
+      &.active,
+      &.selected {
+        background-color: #4f378b;
+        color: #eaddff;
+
+        .item-icon,
+        .drawer-item-icon,
+        .item-arrow,
+        .drawer-item-trailing {
+          color: #eaddff;
+        }
+      }
+    }
+
+    .drawer-capsule-button,
+    .capsule-btn {
+      border-color: #938f99;
+      color: #e6e1e5;
+
+      &:hover {
+        background-color: #211f26;
+        border-color: #d0bcff;
+        color: #d0bcff;
+
+        mat-icon {
+          color: #d0bcff;
+        }
+      }
+    }
+  }
+}
+
+

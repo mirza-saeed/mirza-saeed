@@ -1,0 +1,130 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.m3-expressive-card {
+  background: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-corner-xl);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  border: 1px solid var(--md-sys-color-outline-ghost);
+  transition: transform var(--md-duration-medium) var(--md-motion-spring),
+    background-color var(--md-duration-short) ease,
+    box-shadow var(--md-duration-medium) var(--md-motion-spring);
+  overflow: hidden;
+  position: relative;
+
+  &.hover-lift:hover {
+    transform: translateY(-4px);
+    background: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--md-sys-glow-primary);
+    border-color: var(--md-sys-color-outline-variant);
+  }
+
+  .card-media-surface {
+    min-height: 190px;
+    border-radius: var(--md-shape-corner-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    padding: 12px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .card-content {
+    padding: 0 8px 12px 8px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    .eyebrow-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--md-sys-color-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .headline {
+      margin: 0 0 8px 0;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--md-sys-color-on-surface);
+      letter-spacing: -0.01em;
+    }
+
+    .description {
+      margin: 0 0 16px 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--md-sys-color-on-surface-variant);
+    }
+  }
+}
+
+// Mobile Breakpoint (<= 768px)
+@media (max-width: 768px) {
+  .m3-expressive-card {
+    border-radius: 28px;
+    padding: 16px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    .card-media-surface {
+      min-height: 175px;
+      height: auto;
+      max-height: none;
+      border-radius: 20px;
+      margin-bottom: 14px;
+      padding: 12px 10px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .card-content {
+      padding: 0 4px 8px 4px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+
+      .headline {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .description {
+        font-size: 14px;
+        line-height: 1.5;
+        margin-bottom: 12px;
+      }
+    }
+  }
+}

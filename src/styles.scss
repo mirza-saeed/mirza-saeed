@@ -1,0 +1,468 @@
+@use '@angular/material' as mat;
+
+// Define Angular Material 3 Theme with Violet and Rose accents
+html {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$violet-palette,
+        tertiary: mat.$rose-palette,
+      ),
+      typography: 'Plus Jakarta Sans',
+      density: 0,
+    )
+  );
+}
+
+// ----------------------------------------------------
+// M3 Expressive Design Tokens (Light - Default)
+// ----------------------------------------------------
+:root {
+  color-scheme: light;
+
+  // Tonal Surface Tiers (Signature M3 Expressive Lavender/Violet)
+  --md-sys-color-background: #f8f6fa;
+  --md-sys-color-surface-dim: #f3f0f7;
+  --md-sys-color-surface: #faf8fc;
+  --md-sys-color-surface-container-lowest: #ffffff;
+  --md-sys-color-surface-container-low: #f5f2f9;
+  --md-sys-color-surface-container: #ece8f6;
+  --md-sys-color-surface-container-high: #e4ddf7;
+  --md-sys-color-surface-container-highest: #ded5f2;
+
+  // Primary Violet
+  --md-sys-color-primary: #6750a4;
+  --md-sys-color-on-primary: #ffffff;
+  --md-sys-color-primary-container: #eaddff;
+  --md-sys-color-on-primary-container: #21005d;
+
+  // Secondary & Tertiary
+  --md-sys-color-secondary: #625b71;
+  --md-sys-color-secondary-container: #e8def8;
+  --md-sys-color-on-secondary-container: #1d192b;
+  --md-sys-color-tertiary: #7d5260;
+  --md-sys-color-tertiary-container: #ffd8e4;
+  --md-sys-color-on-tertiary-container: #31111d;
+
+  // Neutral & Outline
+  --md-sys-color-on-surface: #1c1b1f;
+  --md-sys-color-on-surface-variant: #49454f;
+  --md-sys-color-outline: #79747e;
+  --md-sys-color-outline-variant: rgba(103, 80, 164, 0.12);
+  --md-sys-color-outline-ghost: rgba(103, 80, 164, 0.06);
+
+  // Atmospheric Glows
+  --md-sys-glow-primary: 0 16px 36px -10px rgba(103, 80, 164, 0.18);
+  --md-sys-glow-subtle: 0 8px 24px -6px rgba(103, 80, 164, 0.08);
+
+  // Expressive Shape Radii
+  --md-shape-corner-xs: 4px;
+  --md-shape-corner-sm: 8px;
+  --md-shape-corner-md: 16px;
+  --md-shape-corner-lg: 24px;
+  --md-shape-corner-xl: 32px;
+  --md-shape-corner-full: 9999px;
+
+  // Motion Physics (Convert Springs to Cubic-Bezier Curves)
+  --md-motion-spring: cubic-bezier(0.2, 0, 0, 1);
+  --md-motion-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --md-motion-quick: cubic-bezier(0.1, 0.9, 0.2, 1);
+  --md-duration-short: 200ms;
+  --md-duration-medium: 350ms;
+  --md-duration-long: 500ms;
+
+  // Typography Tokens
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+// ----------------------------------------------------
+// Dark Theme Overrides
+// ----------------------------------------------------
+[data-theme='dark'] {
+  color-scheme: dark;
+
+  --md-sys-color-background: #141218;
+  --md-sys-color-surface-dim: #110f15;
+  --md-sys-color-surface: #141218;
+  --md-sys-color-surface-container-lowest: #0e0c12;
+  --md-sys-color-surface-container-low: #1d1b22;
+  --md-sys-color-surface-container: #211f26;
+  --md-sys-color-surface-container-high: #2b2930;
+  --md-sys-color-surface-container-highest: #36343b;
+
+  --md-sys-color-primary: #d0bcff;
+  --md-sys-color-on-primary: #381e72;
+  --md-sys-color-primary-container: #4f378b;
+  --md-sys-color-on-primary-container: #eaddff;
+
+  --md-sys-color-secondary: #ccc2dc;
+  --md-sys-color-secondary-container: #4a4458;
+  --md-sys-color-on-secondary-container: #e8def8;
+  --md-sys-color-tertiary: #efb8c8;
+  --md-sys-color-tertiary-container: #633b48;
+  --md-sys-color-on-tertiary-container: #ffd8e4;
+
+  --md-sys-color-on-surface: #e6e1e5;
+  --md-sys-color-on-surface-variant: #cac4d0;
+  --md-sys-color-outline: #938f99;
+  --md-sys-color-outline-variant: rgba(208, 188, 255, 0.15);
+  --md-sys-color-outline-ghost: rgba(208, 188, 255, 0.08);
+
+  --md-sys-glow-primary: 0 16px 36px -10px rgba(208, 188, 255, 0.15);
+  --md-sys-glow-subtle: 0 8px 24px -6px rgba(208, 188, 255, 0.06);
+}
+
+// ----------------------------------------------------
+// Global Reset & Base
+// ----------------------------------------------------
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--md-sys-color-background);
+  color: var(--md-sys-color-on-surface);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--md-duration-medium) var(--md-motion-spring),
+    color var(--md-duration-medium) var(--md-motion-spring);
+  overflow-x: hidden;
+}
+
+// Material Symbols alignment helper
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}
+
+// Accessibility: Focus rings
+:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+
+// Motion Fallback for prefers-reduced-motion
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Global Animation Pause Toggle
+[data-animations-paused='true'] {
+  *,
+  *::before,
+  *::after {
+    animation-play-state: paused !important;
+  }
+
+  // Ensure entrance animations are never stuck at opacity 0
+  .hero-identity-col,
+  .mobile-hero-card,
+  .m3-record-enter,
+  .m3-panel-enter,
+  .m3-card-enter {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+
+// Angular Material Sidenav Scrim & Overrides
+.mat-drawer-container {
+  background-color: var(--md-sys-color-background) !important;
+  color: var(--md-sys-color-on-surface) !important;
+}
+
+.mat-drawer-backdrop.mat-drawer-shown {
+  background-color: rgba(28, 27, 31, 0.32) !important;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.mat-drawer.m3-expressive-drawer,
+.mat-drawer.m3-modal-drawer {
+  border-radius: 0 28px 28px 0 !important;
+  background-color: var(--md-sys-color-surface-dim) !important;
+  color: var(--md-sys-color-on-surface) !important;
+  box-shadow: 4px 0 24px rgba(103, 80, 164, 0.08) !important;
+  border: none !important;
+  padding: 12px 12px 24px 12px !important;
+  box-sizing: border-box !important;
+  width: clamp(280px, 76vw, 320px) !important;
+  max-width: 320px !important;
+}
+
+// Custom Smooth Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--md-sys-color-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--md-sys-color-surface-container-highest);
+  border-radius: var(--md-shape-corner-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--md-sys-color-primary);
+}
+
+// ----------------------------------------------------
+// Global M3 Expressive Button Utilities
+// ----------------------------------------------------
+.m3-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: var(--md-shape-corner-full);
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform var(--md-duration-short) var(--md-motion-spring),
+    box-shadow var(--md-duration-short) var(--md-motion-spring),
+    background-color var(--md-duration-short) ease,
+    color var(--md-duration-short) ease;
+
+  .btn-icon {
+    font-size: 18px;
+  }
+
+  &.m3-btn-filled {
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
+    box-shadow: 0 4px 16px -2px rgba(103, 80, 164, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px -2px rgba(103, 80, 164, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &.m3-btn-outlined {
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    border: 1.5px solid var(--md-sys-color-primary);
+
+    &:hover {
+      background: var(--md-sys-color-primary-container);
+      color: var(--md-sys-color-on-primary-container);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &.m3-btn-text {
+    background: transparent;
+    color: var(--md-sys-color-on-surface);
+
+    &:hover {
+      background: var(--md-sys-color-surface-container);
+      color: var(--md-sys-color-primary);
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Material 3 Expressive Motion & Animation Keyframes
+// ----------------------------------------------------
+@keyframes m3SpringUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes m3SpringFade {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes m3SlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes m3SlideOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+}
+
+@keyframes m3FloatSoft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes m3FloatSoftReverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes m3AmbientPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.38;
+  }
+}
+
+// Animation utility classes used with Angular v20.2+ animate.enter and animate.leave
+.m3-record-enter {
+  animation: m3SlideIn 0.35s var(--md-motion-spring) both;
+}
+
+.m3-record-leave {
+  animation: m3SlideOut 0.25s var(--md-motion-spring) both;
+}
+
+.m3-panel-enter {
+  animation: m3SpringFade 0.35s var(--md-motion-spring) both;
+}
+
+.m3-card-enter {
+  animation: m3SpringUp 0.5s var(--md-motion-spring) both;
+}
+
+// Stagger delays
+.stagger-1 {
+  animation-delay: 80ms;
+}
+
+.stagger-2 {
+  animation-delay: 160ms;
+}
+
+.stagger-3 {
+  animation-delay: 240ms;
+}
+
+.stagger-4 {
+  animation-delay: 320ms;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes travel {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    left: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes travelDown {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes waveBounce {
+  0% {
+    transform: scaleY(0.4);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+

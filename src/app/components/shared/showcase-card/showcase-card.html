@@ -1,0 +1,15 @@
+<article class="m3-expressive-card" [class.hover-lift]="interactive()">
+  <div class="card-media-surface" [style.background]="mediaBackground()">
+    <ng-content select="[card-preview]"></ng-content>
+  </div>
+  <div class="card-content">
+    @if (badge()) {
+      <span class="eyebrow-badge">{{ badge() }}</span>
+    }
+    <h3 class="headline">{{ headline() }}</h3>
+    @if (description()) {
+      <p class="description">{{ description() }}</p>
+    }
+    <ng-content></ng-content>
+  </div>
+</article>

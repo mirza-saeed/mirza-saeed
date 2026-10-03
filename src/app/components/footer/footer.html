@@ -1,0 +1,84 @@
+<footer class="m3-footer-section" id="contact">
+  <!-- Interactive Contact Invitation Card -->
+  <div class="contact-cta-card">
+    <div class="cta-content">
+      <span class="cta-badge font-mono">Next Steps & Opportunities</span>
+      <h2 class="cta-headline">Let's build scalable systems together.</h2>
+      <p class="cta-sub">
+        Available for full-time senior engineering roles, remote FinTech/RegTech architectures, and high-impact distributed teams.
+      </p>
+
+      <div class="contact-actions-row">
+        <a
+          href="mailto:saeedowais310@gmail.com"
+          class="m3-btn m3-btn-filled"
+        >
+          <span class="material-symbols-outlined btn-icon">mail</span>
+          <span>Send Direct Email</span>
+        </a>
+
+        <button
+          type="button"
+          class="m3-btn m3-btn-outlined"
+          (click)="copyContact()"
+        >
+          <span class="material-symbols-outlined btn-icon">
+            {{ copied() ? 'check' : 'phone_iphone' }}
+          </span>
+          <span>{{ copied() ? 'Copied Contact!' : '+92 348 7778929' }}</span>
+        </button>
+
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="m3-btn m3-btn-text"
+        >
+          <span class="material-symbols-outlined btn-icon">download</span>
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation & Education Details -->
+  <div class="footer-meta-grid">
+    <div class="meta-col brand">
+      <h3 class="brand-title">Mirza Muhammad Saeed</h3>
+      <p class="brand-desc">
+        Software Engineer & Full-Stack Developer • BS Computer Science, University of the Punjab (CGPA 3.55/4.00, Oct 2019 – Jul 2023) • Lahore, Punjab, Pakistan.
+      </p>
+    </div>
+
+    <div class="meta-col links">
+      <span class="links-title font-mono">CONNECT</span>
+      <div class="links-list">
+        <a
+          href="https://linkedin.com/in/mirza-muhammad-saeed"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+        >
+          <span class="material-symbols-outlined">link</span>
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://mirza-saeed.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="social-link"
+        >
+          <span class="material-symbols-outlined">code</span>
+          <span>GitHub Portfolio</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom-bar">
+    <span class="copyright-text font-mono">
+      &copy; {{ currentYear }} Mirza Muhammad Saeed. Inspired by Material 3 Expressive (m3.material.io). Built with Angular 21.
+    </span>
+  </div>
+</footer>

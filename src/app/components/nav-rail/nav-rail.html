@@ -1,0 +1,49 @@
+<nav class="m3-nav-rail" aria-label="Main Navigation">
+  <!-- Top Header / Logo / Search -->
+  <div class="rail-header">
+    <button
+      type="button"
+      class="rail-icon-btn search-btn"
+      aria-label="Search portfolio"
+      (click)="selectSection('projects')"
+      title="Search portfolio"
+    >
+      <span class="material-symbols-outlined">search</span>
+    </button>
+  </div>
+
+  <!-- Center Navigation Items -->
+  <div class="rail-items" role="tablist">
+    @for (item of navItems; track item.id) {
+      <button
+        type="button"
+        class="rail-destination"
+        [class.active]="activeSection() === item.id"
+        (click)="selectSection(item.id)"
+        role="tab"
+        [attr.aria-selected]="activeSection() === item.id"
+        [attr.aria-label]="item.label"
+      >
+        <div class="icon-indicator">
+          <span class="material-symbols-outlined">{{ item.icon }}</span>
+        </div>
+        <span class="destination-label">{{ item.label }}</span>
+      </button>
+    }
+  </div>
+
+  <!-- Bottom Utility (Theme Toggle & External) -->
+  <div class="rail-footer">
+    <button
+      type="button"
+      class="rail-icon-btn theme-btn"
+      [attr.aria-label]="isDark() ? 'Switch to Light Theme' : 'Switch to Dark Theme'"
+      (click)="toggleTheme()"
+      [title]="isDark() ? 'Switch to Light Theme' : 'Switch to Dark Theme'"
+    >
+      <span class="material-symbols-outlined">
+        {{ isDark() ? 'light_mode' : 'dark_mode' }}
+      </span>
+    </button>
+  </div>
+</nav>

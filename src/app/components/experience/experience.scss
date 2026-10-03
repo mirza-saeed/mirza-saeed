@@ -1,0 +1,405 @@
+.m3-experience-section {
+  padding: 64px 0;
+  position: relative;
+}
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 24px;
+  position: relative;
+  padding-bottom: 36px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .marker-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--md-sys-color-surface-container-highest);
+    border: 3px solid var(--md-sys-color-primary);
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+
+    .pulse-ring {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(103, 80, 164, 0.25);
+      top: -10px;
+      left: -10px;
+      animation: ripplePulse 2s infinite ease-out;
+    }
+  }
+
+  .marker-line {
+    position: absolute;
+    top: 42px;
+    bottom: -10px;
+    width: 2px;
+    background: var(--md-sys-color-outline-variant);
+    z-index: 1;
+  }
+}
+
+.timeline-card {
+  background: var(--md-sys-color-surface-container);
+  border-radius: var(--md-shape-corner-xl);
+  padding: 28px;
+  border: 1px solid var(--md-sys-color-outline-ghost);
+  transition: transform var(--md-duration-medium) var(--md-motion-spring),
+    box-shadow var(--md-duration-medium) var(--md-motion-spring),
+    background-color var(--md-duration-short) ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    background: var(--md-sys-color-surface-container-high);
+    box-shadow: var(--md-sys-glow-primary);
+    border-color: var(--md-sys-color-outline-variant);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .role-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--md-sys-color-on-surface);
+      margin: 0 0 4px 0;
+      letter-spacing: -0.01em;
+    }
+
+    .company-sub {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--md-sys-color-primary);
+      font-weight: 600;
+
+      .sep {
+        color: var(--md-sys-color-outline);
+      }
+
+      .location-name {
+        color: var(--md-sys-color-on-surface-variant);
+        font-weight: 500;
+      }
+    }
+
+    .period-badge {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--md-sys-color-on-surface-variant);
+      background: var(--md-sys-color-surface-container-highest);
+      padding: 6px 12px;
+      border-radius: var(--md-shape-corner-full);
+
+      .current-indicator {
+        font-size: 9px;
+        font-weight: 800;
+        background: #10b981;
+        color: white;
+        padding: 2px 6px;
+        border-radius: var(--md-shape-corner-full);
+      }
+    }
+  }
+
+  .experience-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--md-sys-color-on-surface-variant);
+    margin: 0 0 16px 0;
+  }
+
+  .highlights-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--md-sys-color-on-surface);
+
+      .check-bullet {
+        font-size: 18px;
+        color: var(--md-sys-color-primary);
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+    }
+  }
+
+  .skills-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding-top: 16px;
+    border-top: 1px solid var(--md-sys-color-outline-ghost);
+
+    .chip {
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--md-sys-color-surface-container-highest);
+      color: var(--md-sys-color-primary);
+      padding: 4px 10px;
+      border-radius: var(--md-shape-corner-full);
+      border: 1px solid var(--md-sys-color-outline-ghost);
+    }
+  }
+}
+
+@keyframes ripplePulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .m3-experience-section {
+    padding: 36px 0;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+
+    .section-badge {
+      font-size: 10px;
+      padding: 4px 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .section-subhead {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .timeline-item {
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+    padding-bottom: 24px;
+  }
+
+  .timeline-marker .marker-dot {
+    margin-top: 14px;
+    width: 14px;
+    height: 14px;
+  }
+
+  .timeline-card {
+    padding: 20px 16px;
+    border-radius: 24px;
+
+    .card-header {
+      margin-bottom: 12px;
+
+      .role-title {
+        font-size: 17px;
+      }
+
+      .company-sub {
+        font-size: 13px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+
+        .sep {
+          display: none;
+        }
+      }
+
+      .period-badge {
+        font-size: 11px;
+        padding: 4px 10px;
+      }
+    }
+
+    .experience-desc {
+      font-size: 13.5px;
+      margin-bottom: 12px;
+    }
+
+    .highlights-list li {
+      font-size: 13px;
+    }
+
+    .skills-chips {
+      padding-top: 12px;
+
+      .chip {
+        font-size: 10px;
+        padding: 3px 8px;
+      }
+    }
+  }
+}
+
+// Education Card Styling (M3 Tonal Card)
+.education-card {
+  margin-top: 32px;
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: var(--md-shape-corner-xl);
+  padding: 24px 28px;
+  border: 1px solid var(--md-sys-color-outline-ghost);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--md-sys-glow-subtle);
+  transition: transform var(--md-duration-medium) var(--md-motion-spring),
+    box-shadow var(--md-duration-medium) var(--md-motion-spring);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--md-sys-glow-primary);
+    border-color: var(--md-sys-color-outline-variant);
+  }
+
+  .edu-icon-badge {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    border-radius: 9999px;
+    background: var(--md-sys-color-primary-container);
+    color: var(--md-sys-color-on-primary-container);
+    display: grid;
+    place-items: center;
+
+    .material-symbols-outlined {
+      font-size: 24px;
+    }
+  }
+
+  .edu-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-grow: 1;
+
+    .edu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+
+      .edu-degree {
+        font-size: 17px;
+        font-weight: 700;
+        color: var(--md-sys-color-on-surface);
+        margin: 0;
+      }
+
+      .edu-period {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--md-sys-color-primary);
+        background: var(--md-sys-color-surface-container);
+        padding: 4px 10px;
+        border-radius: var(--md-shape-corner-full);
+      }
+    }
+
+    .edu-institution {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13.5px;
+      color: var(--md-sys-color-on-surface-variant);
+      flex-wrap: wrap;
+
+      .inst-name {
+        font-weight: 600;
+        color: var(--md-sys-color-primary);
+      }
+
+      .sep {
+        opacity: 0.5;
+      }
+
+      .edu-grade {
+        font-weight: 700;
+        color: #10b981;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .education-card {
+    padding: 20px 16px;
+    gap: 14px;
+    margin-top: 24px;
+
+    .edu-icon-badge {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+
+      .material-symbols-outlined {
+        font-size: 20px;
+      }
+    }
+
+    .edu-info {
+      .edu-header {
+        .edu-degree {
+          font-size: 15px;
+        }
+
+        .edu-period {
+          font-size: 11px;
+        }
+      }
+
+      .edu-institution {
+        font-size: 12px;
+      }
+    }
+  }
+}

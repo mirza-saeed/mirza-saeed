@@ -1,0 +1,60 @@
+<section class="m3-stack-section" id="stack">
+  <div id="skills"></div>
+  <div class="section-header">
+    <span class="section-badge font-mono">Foundations & Architecture</span>
+    <h2 class="section-title">Technical Competencies</h2>
+    <p class="section-subhead">
+      Deep expertise in modern reactive frameworks, financial domain mechanics, and robust backend services.
+    </p>
+  </div>
+
+  <!-- Architecture Layer Ribbon -->
+  <div class="architecture-ribbon" id="architecture">
+    <div class="layer-pill">
+      <span class="layer-num font-mono">01</span>
+      <span class="layer-name">Presentation</span>
+      <span class="layer-tech font-mono">Angular 21 • Next.js • React</span>
+    </div>
+    <span class="material-symbols-outlined layer-arrow">arrow_forward</span>
+    <div class="layer-pill">
+      <span class="layer-num font-mono">02</span>
+      <span class="layer-name">Application & API</span>
+      <span class="layer-tech font-mono">Node.js • NestJS • Laravel</span>
+    </div>
+    <span class="material-symbols-outlined layer-arrow">arrow_forward</span>
+    <div class="layer-pill">
+      <span class="layer-num font-mono">03</span>
+      <span class="layer-name">Data & Analytics</span>
+      <span class="layer-tech font-mono">PostgreSQL • MySQL • ECharts</span>
+    </div>
+    <span class="material-symbols-outlined layer-arrow">arrow_forward</span>
+    <div class="layer-pill highlight">
+      <span class="layer-num font-mono">04</span>
+      <span class="layer-name">Domain Engine</span>
+      <span class="layer-tech font-mono">RegTech AML • Treasury ERP</span>
+    </div>
+  </div>
+
+  <!-- Categorized Cards Grid -->
+  <div class="categories-grid">
+    @for (cat of categories; track cat.title) {
+      <div class="category-card">
+        <div class="card-head">
+          <div class="icon-bubble">
+            <span class="material-symbols-outlined">{{ cat.icon }}</span>
+          </div>
+          <div class="head-text">
+            <h3 class="cat-title">{{ cat.title }}</h3>
+            <p class="cat-summary">{{ cat.summary }}</p>
+          </div>
+        </div>
+
+        <div class="skills-pill-cloud">
+          @for (skill of cat.skills; track skill) {
+            <span class="m3-skill-pill font-mono">{{ skill }}</span>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</section>

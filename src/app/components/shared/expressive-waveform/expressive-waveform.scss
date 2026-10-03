@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.waveform-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.waveform-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+
+  .waveform-label {
+    color: var(--md-sys-color-on-surface-variant);
+    font-weight: 600;
+  }
+
+  .waveform-percentage {
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+  }
+}
+
+.waveform-container {
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+}
+
+.waveform-svg {
+  width: 100%;
+  height: 100%;
+  stroke-linecap: round;
+  fill: none;
+
+  .track {
+    stroke: var(--md-sys-color-surface-container-highest);
+    stroke-width: 6;
+  }
+
+  .progress {
+    stroke: var(--md-sys-color-primary);
+    stroke-width: 6;
+    stroke-dasharray: 160;
+    transition: stroke-dashoffset 0.45s var(--md-motion-spring);
+  }
+}

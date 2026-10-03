@@ -1,0 +1,85 @@
+<section class="m3-experience-section" id="experience">
+  <div class="section-header">
+    <span class="section-badge font-mono">Chronological Trajectory</span>
+    <h2 class="section-title">Professional Experience</h2>
+    <p class="section-subhead">
+      Engineering mission-critical FinTech & RegTech systems across UK and global distributed teams.
+    </p>
+  </div>
+
+  <div class="timeline-container">
+    @for (exp of experiences; track exp.id; let idx = $index) {
+      <div class="timeline-item" [class.current]="exp.isCurrent">
+        <!-- Marker Node -->
+        <div class="timeline-marker">
+          <div class="marker-dot">
+            @if (exp.isCurrent) {
+              <span class="pulse-ring"></span>
+            }
+          </div>
+          @if (idx < experiences.length - 1) {
+            <div class="marker-line"></div>
+          }
+        </div>
+
+        <!-- Content Card -->
+        <div class="timeline-card">
+          <div class="card-header">
+            <div class="role-company">
+              <h3 class="role-title">{{ exp.role }}</h3>
+              <div class="company-sub">
+                <span class="company-name">{{ exp.company }}</span>
+                <span class="sep">•</span>
+                <span class="location-name">{{ exp.location }}</span>
+              </div>
+            </div>
+
+            <div class="period-badge font-mono">
+              @if (exp.isCurrent) {
+                <span class="current-indicator">PRESENT</span>
+              }
+              <span>{{ exp.period }}</span>
+            </div>
+          </div>
+
+          <p class="experience-desc">{{ exp.description }}</p>
+
+          <ul class="highlights-list">
+            @for (hl of exp.highlights; track hl) {
+              <li>
+                <span class="material-symbols-outlined check-bullet">arrow_right_alt</span>
+                <span>{{ hl }}</span>
+              </li>
+            }
+          </ul>
+
+          <div class="skills-chips">
+            @for (skill of exp.skills; track skill) {
+              <span class="chip font-mono">{{ skill }}</span>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+
+  <!-- Academic Background Card from Resume -->
+  <div class="education-card">
+    <div class="edu-icon-badge">
+      <span class="material-symbols-outlined">school</span>
+    </div>
+    <div class="edu-info">
+      <div class="edu-header">
+        <h3 class="edu-degree">Bachelor of Science in Computer Science (BSCS)</h3>
+        <span class="edu-period font-mono">Oct 2019 – Jul 2023</span>
+      </div>
+      <div class="edu-institution">
+        <span class="inst-name">University of the Punjab</span>
+        <span class="sep">•</span>
+        <span class="inst-loc">Lahore, Punjab, Pakistan</span>
+        <span class="sep">•</span>
+        <span class="edu-grade font-mono">CGPA: 3.55 / 4.00 (88%)</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,218 @@
+<section class="m3-bento-section" id="projects">
+  <div id="highlights"></div>
+  <div class="section-header">
+    <span class="section-badge font-mono">Engineered Highlights</span>
+    <h2 class="section-title">Systems & Developer Tooling</h2>
+    <p class="section-subhead">
+      Production architectures built with Angular, Material 3, Node graphs, and enterprise financial ledgers.
+    </p>
+  </div>
+
+  <div class="bento-grid-container">
+    <!-- Card 1: Financial & Enterprise Architecture -->
+    <app-showcase-card
+      class="m3-card-enter stagger-1"
+      badge="FinTech • ACE Money Transfer"
+      headline="Accounts & Treasury ERP"
+      description="Enterprise ERP engineered with double-entry ledgers, FX, payout deals, wires, voucher management (journal/receipt), and Angular 19 reactive dashboards."
+      mediaBackground="linear-gradient(135deg, rgba(103, 80, 164, 0.08) 0%, rgba(234, 221, 255, 0.4) 100%)"
+    >
+      <div card-preview class="preview-canvas">
+        <div class="treasury-preview-widget">
+          <div class="treasury-nav-tabs">
+            @for (acc of accounts(); track acc.name; let idx = $index) {
+              <button
+                type="button"
+                class="tab-pill"
+                [class.active]="selectedAccountIndex() === idx"
+                (click)="selectAccount(idx)"
+              >
+                {{ acc.name }}
+              </button>
+            }
+          </div>
+
+          @for (acc of accounts(); track acc.name; let idx = $index) {
+            @if (selectedAccountIndex() === idx) {
+              <div class="treasury-display-card" animate.enter="m3-panel-enter">
+                <div class="currency-tag font-mono">{{ acc.currency }} POOL</div>
+                <div class="amount-val font-mono">
+                  {{ acc.currency === 'GBP' ? '£' : (acc.currency === 'EUR' ? '€' : '$') }}
+                  {{ acc.balance | number: '1.2-2' }}
+                </div>
+                <div class="telemetry-row">
+                  <span class="status-chip" [class.streaming]="acc.status === 'Streaming'">
+                    <span class="dot"></span>
+                    {{ acc.status }}
+                  </span>
+                  <span class="speed-chip font-mono">&lt; 14ms latency</span>
+                </div>
+              </div>
+            }
+          }
+        </div>
+      </div>
+
+      <div class="card-footer-tags">
+        <span class="tag-pill">Signals</span>
+        <span class="tag-pill">Custom Host Directives</span>
+        <span class="tag-pill">RxJS</span>
+        <span class="tag-pill">ECharts</span>
+      </div>
+    </app-showcase-card>
+
+    <!-- Card 2: NestView Developer Tooling -->
+    <app-showcase-card
+      class="m3-card-enter stagger-2"
+      badge="Developer Tool • AST & Graph"
+      headline="NestView Graph Visualizer"
+      description="Interactive node graph engine that parses TypeScript interfaces, C# DTOs, and JSON schemas into navigable, hierarchical AST graphs."
+      mediaBackground="linear-gradient(135deg, rgba(234, 221, 255, 0.5) 0%, rgba(243, 240, 247, 0.8) 100%)"
+    >
+      <div card-preview class="preview-canvas">
+        <div class="nestview-preview-widget">
+          <div class="format-switcher">
+            @for (fmt of ['TypeScript', 'JSON', 'C# DTO']; track fmt) {
+              <button
+                type="button"
+                class="format-pill"
+                [class.active]="activeSchemaFormat() === fmt"
+                (click)="setSchemaFormat(fmt)"
+              >
+                {{ fmt }}
+              </button>
+            }
+          </div>
+
+          <div class="graph-inspector-surface">
+            @for (fmt of ['TypeScript', 'JSON', 'C# DTO']; track fmt) {
+              @if (activeSchemaFormat() === fmt) {
+                <div class="code-preview font-mono" animate.enter="m3-panel-enter">
+                  <pre>{{ schemas[activeSchemaFormat()] }}</pre>
+                </div>
+              }
+            }
+            <div class="node-hierarchy">
+              <div class="ast-node root">
+                <span class="material-symbols-outlined">data_object</span>
+                <span>Root Model</span>
+              </div>
+              <div class="tree-line"></div>
+              <div class="ast-node child">
+                <span class="material-symbols-outlined">account_tree</span>
+                <span>DTO Schema</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer-tags">
+        <span class="tag-pill">AST Parsing</span>
+        <span class="tag-pill">Graph Hierarchy</span>
+        <span class="tag-pill">Developer Tooling</span>
+      </div>
+    </app-showcase-card>
+
+    <!-- Card 3: Compliance & RegTech Interface -->
+    <app-showcase-card
+      class="m3-card-enter stagger-3"
+      badge="RegTech • Programmers Force"
+      headline="AML Watcher Compliance"
+      description="Mission-critical anti-money laundering compliance toolkit featuring case search, risk management views, and administrative portals reducing overhead by 80%."
+      mediaBackground="linear-gradient(135deg, rgba(125, 82, 96, 0.08) 0%, rgba(255, 216, 228, 0.35) 100%)"
+    >
+      <div card-preview class="preview-canvas">
+        <div class="aml-preview-widget">
+          <div class="search-input-wrapper">
+            <span class="material-symbols-outlined">search</span>
+            <input
+              id="aml-search-input"
+              name="amlSearchField"
+              type="text"
+              class="aml-search-field"
+              placeholder="Search entity, PEP, or sanction..."
+              [ngModel]="amlSearchQuery()"
+              (ngModelChange)="amlSearchQuery.set($event)"
+              aria-label="AML Screening Search"
+            />
+          </div>
+
+          <div class="aml-records-list">
+            @for (record of filteredAmlRecords(); track record.entity) {
+              <div class="record-row" animate.enter="m3-record-enter" animate.leave="m3-record-leave">
+                <div class="record-info">
+                  <span class="record-entity">{{ record.entity }}</span>
+                  <span class="record-type font-mono">{{ record.type }}</span>
+                </div>
+                <div class="record-badges">
+                  <span
+                    class="risk-badge"
+                    [class.low]="record.risk === 'Low'"
+                    [class.medium]="record.risk === 'Medium'"
+                    [class.high]="record.risk === 'High'"
+                  >
+                    {{ record.risk }} Risk
+                  </span>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer-tags">
+        <span class="tag-pill">Sumsub KYC</span>
+        <span class="tag-pill">Sanction Screening</span>
+        <span class="tag-pill">ETL Pipelines</span>
+      </div>
+    </app-showcase-card>
+
+    <!-- Card 4: Interactive M3 Component Sandbox -->
+    <app-showcase-card
+      class="m3-card-enter stagger-4"
+      badge="Design System • M3 Expressive"
+      headline="Interactive Component Sandbox"
+      description="Live Material 3 Expressive tactile controls featuring spring-animated pill buttons, dynamic waveform metrics, and tonal palette tokens."
+      mediaBackground="radial-gradient(circle at top right, #f7b2c5 0%, #a389f4 70%)"
+    >
+      <div card-preview class="preview-canvas">
+        <div class="sandbox-widget">
+          <div class="sandbox-control-row">
+            <app-segmented-group
+              [options]="['Frontend', 'Backend', 'FinTech']"
+              [selected]="sandboxCategory()"
+              (selectionChange)="sandboxCategory.set($event)"
+            ></app-segmented-group>
+          </div>
+
+          <div class="waveform-box">
+            <app-expressive-waveform
+              [progress]="sandboxProgress()"
+              [label]="'Adaptive Stream ' + sandboxCategory()"
+            ></app-expressive-waveform>
+
+            <div class="slider-control">
+              <label for="progress-range" class="sr-only">Adjust Stream Rate</label>
+              <input
+                id="progress-range"
+                type="range"
+                min="10"
+                max="100"
+                [ngModel]="sandboxProgress()"
+                (ngModelChange)="sandboxProgress.set($event)"
+                class="m3-slider"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer-tags">
+        <span class="tag-pill">Continuous Pills</span>
+        <span class="tag-pill">Spring Curves</span>
+        <span class="tag-pill">Waveform SVG</span>
+      </div>
+    </app-showcase-card>
+  </div>
+</section>

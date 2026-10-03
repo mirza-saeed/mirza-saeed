@@ -1,0 +1,432 @@
+<section class="m3-hero-section" id="home">
+  <div id="hero"></div>
+  <!-- Desktop Hero Layout (> 768px) -->
+  <div class="desktop-hero-layout">
+    <div class="hero-split-grid">
+      <!-- Left Column: Identity & Headline -->
+      <div class="hero-identity-col">
+        <div class="eyebrow-container">
+          <span class="version-chip">
+            <span class="material-symbols-outlined chip-icon">verified</span>
+            M3 Expressive • Full Stack Engineer
+          </span>
+          <span class="location-badge font-mono">
+            <span class="status-dot"></span>
+            Lahore, Pakistan • Open to Remote
+          </span>
+        </div>
+
+        <h1 class="hero-title">
+          Mirza Muhammad <span class="accent-text">Saeed</span>
+        </h1>
+
+        <p class="hero-subhead">
+          Software Engineer & Full-Stack Developer specializing in <strong>Angular 19/21</strong>, <strong>Next.js/React</strong>, <strong>Node.js</strong>, and <strong>Laravel</strong>.
+        </p>
+
+        <p class="hero-body">
+          Building resilient FinTech & RegTech architectures, enterprise double-entry treasury ledgers, automated AML compliance portals, and modern reactive web applications with precision and speed.
+        </p>
+
+        <div class="hero-cta-group">
+          <button
+            type="button"
+            class="m3-btn m3-btn-filled"
+            (click)="scrollTo('projects')"
+          >
+            <span class="material-symbols-outlined btn-icon">widgets</span>
+            <span>Explore Projects</span>
+          </button>
+
+          <button
+            type="button"
+            class="m3-btn m3-btn-outlined"
+            (click)="scrollTo('contact')"
+          >
+            <span class="material-symbols-outlined btn-icon">alternate_email</span>
+            <span>Get in touch</span>
+          </button>
+
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="m3-btn m3-btn-text"
+          >
+            <span class="material-symbols-outlined btn-icon">download</span>
+            <span>Resume</span>
+          </a>
+        </div>
+
+        <!-- Quick Metrics Ribbon -->
+        <div class="metrics-ribbon">
+          <div class="metric-item">
+            <span class="metric-value font-mono">RegTech</span>
+            <span class="metric-label">AML / KYC Compliance</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value font-mono">FinTech</span>
+            <span class="metric-label">Treasury & Ledger Systems</span>
+          </div>
+          <div class="metric-divider"></div>
+          <div class="metric-item">
+            <span class="metric-value font-mono">Angular 21</span>
+            <span class="metric-label">Signals & RxJS Reactive</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Dynamic Interactive Grid Showcase -->
+      <div class="hero-interactive-col" aria-label="Interactive Showcase Collage">
+        <div class="collage-ambient-glow"></div>
+
+        <div class="interactive-canvas">
+          <!-- Floating Card 1: Live Interactive Fintech Ledger Card -->
+          <div class="floating-module fintech-card">
+            <div class="card-top-row">
+              <div class="brand-badge">
+                <span class="material-symbols-outlined">account_balance_wallet</span>
+                <span class="font-mono">TREASURY // LEDGER</span>
+              </div>
+              <span class="live-pill">LIVE FEED</span>
+            </div>
+
+            <div class="balance-display">
+              <span class="currency-symbol font-mono">£</span>
+              <span class="balance-amount font-mono">{{ balance() | number: '1.2-2' }}</span>
+            </div>
+
+            <div class="status-caption font-mono">
+              <span class="material-symbols-outlined sync-icon" [class.spinning]="isTransferring()">
+                sync
+              </span>
+              <span>{{ lastTransferStatus() }}</span>
+            </div>
+
+            <div class="card-actions">
+              <button
+                type="button"
+                class="micro-action-btn"
+                [disabled]="isTransferring()"
+                (click)="triggerTransfer()"
+              >
+                <span class="material-symbols-outlined">send</span>
+                <span>{{ isTransferring() ? 'Validating...' : 'Simulate Transfer' }}</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Floating Card 2: Interactive Reactive Node Graph / AST -->
+          <div class="floating-module syntax-node-card">
+            <div class="node-header">
+              <span class="node-title font-mono">
+                <span class="material-symbols-outlined">hub</span>
+                Reactive Graph
+              </span>
+              <button
+                type="button"
+                class="node-toggle-btn"
+                (click)="toggleSignalNode()"
+                title="Toggle Signal State"
+              >
+                {{ signalActive() ? 'RUNNING' : 'PAUSED' }}
+              </button>
+            </div>
+
+            <div class="graph-nodes">
+              <div class="node-pill source" [class.active]="signalActive()">
+                <span class="node-badge">signal</span>
+                <span class="node-code font-mono">sourceState</span>
+              </div>
+              <div class="node-connector" [class.pulse]="signalActive()"></div>
+              <div class="node-pill computed" [class.active]="signalActive()">
+                <span class="node-badge">computed</span>
+                <span class="node-code font-mono">ledgerTotal()</span>
+              </div>
+              <div class="node-connector" [class.pulse]="signalActive()"></div>
+              <div class="node-pill effect" [class.active]="signalActive()">
+                <span class="node-badge">OnPush</span>
+                <span class="node-code font-mono">renderView()</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Card 3: Quick Mode Switcher & Metric Chip -->
+          <div class="floating-module switcher-card">
+            <div class="switcher-header">
+              <span class="material-symbols-outlined">tune</span>
+              <span class="font-mono">M3 State Mode</span>
+            </div>
+            <div class="mini-segmented">
+              <button
+                type="button"
+                [class.active]="activeMode() === 'Signals'"
+                (click)="activeMode.set('Signals')"
+              >
+                Signals
+              </button>
+              <button
+                type="button"
+                [class.active]="activeMode() === 'RxJS'"
+                (click)="activeMode.set('RxJS')"
+              >
+                RxJS
+              </button>
+              <button
+                type="button"
+                [class.active]="activeMode() === 'Async'"
+                (click)="activeMode.set('Async')"
+              >
+                Async
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Hero Layout (<= 768px): Card-in-Canvas + Touch Swipe Carousel -->
+  <div class="mobile-hero-layout">
+    <!-- Elevated "Card-in-Canvas" Hero Card -->
+    <div class="mobile-hero-card">
+      <div class="mobile-eyebrows">
+        <span class="mobile-badge-pill">
+          <span class="material-symbols-outlined">verified</span>
+          <span>M3 Expressive • Full Stack</span>
+        </span>
+        <span class="mobile-status-badge font-mono">
+          <span class="status-dot"></span>
+          <span>Lahore, PK • Remote</span>
+        </span>
+      </div>
+
+      <h1 class="mobile-hero-title">
+        Mirza Muhammad <span class="accent-text">Saeed</span>
+      </h1>
+
+      <p class="mobile-hero-subhead">
+        Software Engineer & Full-Stack Developer specializing in <strong>Angular 19/21</strong>, <strong>Next.js/React</strong>, <strong>Node.js</strong>, and <strong>Laravel</strong>.
+      </p>
+
+      <p class="mobile-hero-body">
+        Engineering high-stakes FinTech & RegTech platforms, double-entry treasury ledgers, and reactive web architectures.
+      </p>
+
+      <!-- Prominent 56px Full-Width CTA Button -->
+      <div class="mobile-hero-actions">
+        <button
+          type="button"
+          class="mobile-primary-cta"
+          (click)="scrollTo('projects')"
+          aria-label="Explore Mirza's Work"
+        >
+          <span>Explore Work</span>
+          <span class="material-symbols-outlined cta-arrow">arrow_forward</span>
+        </button>
+
+        <div class="mobile-secondary-row">
+          <button
+            type="button"
+            class="mobile-sub-btn"
+            (click)="scrollTo('contact')"
+          >
+            <span class="material-symbols-outlined">alternate_email</span>
+            <span>Get in touch</span>
+          </button>
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-sub-btn"
+          >
+            <span class="material-symbols-outlined">download</span>
+            <span>Resume</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Mobile Metrics Summary -->
+      <div class="mobile-metrics-strip">
+        <div class="metric-col">
+          <span class="metric-val font-mono">RegTech</span>
+          <span class="metric-desc">AML / KYC</span>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-col">
+          <span class="metric-val font-mono">FinTech</span>
+          <span class="metric-desc">Ledgers</span>
+        </div>
+        <div class="metric-sep"></div>
+        <div class="metric-col">
+          <span class="metric-val font-mono">Angular 21</span>
+          <span class="metric-desc">Signals</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Edge-to-Edge Touch Momentum Horizontal Swipe Showcase Carousel -->
+    <div class="mobile-carousel-section">
+      <div class="carousel-header-row">
+        <span class="carousel-tag font-mono">INTERACTIVE SHOWCASE</span>
+        <span class="carousel-hint font-mono">Swipe 4 frames &rarr;</span>
+      </div>
+
+      <div class="showcase-carousel" role="region" aria-label="Interactive Showcase Carousel">
+        <!-- Frame 1: Banking / Treasury Status Preview -->
+        <div
+          class="device-frame frame-treasury"
+          (click)="triggerTransfer()"
+          role="button"
+          tabindex="0"
+          title="Tap to simulate instant transfer"
+        >
+          <div class="frame-notch">
+            <span class="notch-time font-mono">09:41</span>
+            <span class="notch-sensor"></span>
+            <span class="notch-icons font-mono">&bull;&bull;&bull;</span>
+          </div>
+
+          <div class="frame-body">
+            <div class="frame-title font-mono">
+              <span class="material-symbols-outlined">account_balance_wallet</span>
+              <span>TREASURY</span>
+            </div>
+            <div class="frame-currency font-mono">
+              <span class="curr-sign">£</span>{{ (balance() / 1000) | number: '1.1-1' }}k
+            </div>
+            <div class="frame-status-row">
+              <span class="dot-pulse"></span>
+              <span class="status-txt font-mono">{{ isTransferring() ? 'Validating...' : 'Faster Payments' }}</span>
+            </div>
+            <button
+              type="button"
+              class="frame-mini-btn"
+              [disabled]="isTransferring()"
+            >
+              <span class="material-symbols-outlined">send</span>
+              <span>{{ isTransferring() ? 'Transferring...' : 'Simulate' }}</span>
+            </button>
+          </div>
+
+          <div class="frame-footer-label font-mono">
+            <span>01 // Ledger Settlement</span>
+          </div>
+        </div>
+
+        <!-- Frame 2: NestView AST Dependency Graph Preview -->
+        <div
+          class="device-frame frame-ast"
+          (click)="toggleSignalNode()"
+          role="button"
+          tabindex="0"
+          title="Tap to toggle reactive graph state"
+        >
+          <div class="frame-notch">
+            <span class="notch-time font-mono">09:41</span>
+            <span class="notch-sensor"></span>
+            <span class="notch-icons font-mono">&bull;&bull;&bull;</span>
+          </div>
+
+          <div class="frame-body">
+            <div class="frame-title font-mono">
+              <span class="material-symbols-outlined">hub</span>
+              <span>NESTVIEW AST</span>
+            </div>
+            <div class="frame-ast-tree">
+              <div class="ast-chip root">Root Node</div>
+              <div class="ast-wire" [class.active]="signalActive()"></div>
+              <div class="ast-chip child">DTO Schema</div>
+            </div>
+            <div class="frame-status-row">
+              <span class="dot-pulse" [class.paused]="!signalActive()"></span>
+              <span class="status-txt font-mono">{{ signalActive() ? 'AST Engine: RUN' : 'AST Engine: PAUSE' }}</span>
+            </div>
+          </div>
+
+          <div class="frame-footer-label font-mono">
+            <span>02 // Reactive AST</span>
+          </div>
+        </div>
+
+        <!-- Frame 3: AML Watcher Sanction Match Filter Preview -->
+        <div
+          class="device-frame frame-aml"
+          (click)="scrollTo('projects')"
+          role="button"
+          tabindex="0"
+          title="Tap to explore AML Watcher"
+        >
+          <div class="frame-notch">
+            <span class="notch-time font-mono">09:41</span>
+            <span class="notch-sensor"></span>
+            <span class="notch-icons font-mono">&bull;&bull;&bull;</span>
+          </div>
+
+          <div class="frame-body">
+            <div class="frame-title font-mono">
+              <span class="material-symbols-outlined">verified_user</span>
+              <span>AML WATCH</span>
+            </div>
+            <div class="frame-mini-search font-mono">
+              <span class="material-symbols-outlined">search</span>
+              <span>PEP / Sanctions</span>
+            </div>
+            <div class="frame-records">
+              <div class="record-badge high">
+                <span>Apex PEP</span>
+                <strong>HIGH</strong>
+              </div>
+              <div class="record-badge low">
+                <span>Nordic</span>
+                <strong>PASS</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="frame-footer-label font-mono">
+            <span>03 // Sanction Filter</span>
+          </div>
+        </div>
+
+        <!-- Frame 4: Material 3 Waveform & Mode Demo Preview -->
+        <div
+          class="device-frame frame-waveform"
+          (click)="scrollTo('projects')"
+          role="button"
+          tabindex="0"
+          title="Tap to test M3 Component Sandbox"
+        >
+          <div class="frame-notch">
+            <span class="notch-time font-mono">09:41</span>
+            <span class="notch-sensor"></span>
+            <span class="notch-icons font-mono">&bull;&bull;&bull;</span>
+          </div>
+
+          <div class="frame-body">
+            <div class="frame-title font-mono">
+              <span class="material-symbols-outlined">graphic_eq</span>
+              <span>M3 MOTION</span>
+            </div>
+            <div class="mini-wave-bars">
+              <span class="wave-bar b1"></span>
+              <span class="wave-bar b2"></span>
+              <span class="wave-bar b3"></span>
+              <span class="wave-bar b4"></span>
+              <span class="wave-bar b5"></span>
+            </div>
+            <div class="mini-mode-pill font-mono">
+              <span class="active">Signals</span>
+              <span>RxJS</span>
+            </div>
+          </div>
+
+          <div class="frame-footer-label font-mono">
+            <span>04 // Waveform & Spring</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

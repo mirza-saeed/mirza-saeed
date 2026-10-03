@@ -1,0 +1,607 @@
+.m3-bento-section {
+  padding: 64px 0;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 40px;
+
+  .section-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--md-sys-color-primary);
+    background: var(--md-sys-color-primary-container);
+    padding: 5px 12px;
+    border-radius: var(--md-shape-corner-full);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0 0 10px 0;
+    color: var(--md-sys-color-on-surface);
+  }
+
+  .section-subhead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--md-sys-color-on-surface-variant);
+    max-width: 860px;
+    margin: 0;
+  }
+}
+
+.bento-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 960px) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.preview-canvas {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+// ----------------------------------------------------
+// Card 1: Treasury Widget
+// ----------------------------------------------------
+.treasury-preview-widget {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+
+  .treasury-nav-tabs {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-pill {
+      border: none;
+      background: var(--md-sys-color-surface-container-highest);
+      color: var(--md-sys-color-on-surface-variant);
+      padding: 6px 12px;
+      border-radius: var(--md-shape-corner-full);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+
+      &.active {
+        background: var(--md-sys-color-primary);
+        color: var(--md-sys-color-on-primary);
+      }
+    }
+  }
+
+  .treasury-display-card {
+    background: var(--md-sys-color-surface);
+    border-radius: var(--md-shape-corner-md);
+    padding: 16px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    .currency-tag {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--md-sys-color-primary);
+      margin-bottom: 4px;
+    }
+
+    .amount-val {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--md-sys-color-on-surface);
+      margin-bottom: 12px;
+    }
+
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+
+      .status-chip {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: #10b981;
+        font-weight: 600;
+
+        .dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #10b981;
+        }
+
+        &.streaming .dot {
+          animation: pulse 1s infinite alternate;
+        }
+      }
+
+      .speed-chip {
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 10px;
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Card 2: NestView Widget
+// ----------------------------------------------------
+.nestview-preview-widget {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+
+  .format-switcher {
+    display: flex;
+    gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    box-sizing: border-box;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .format-pill {
+      border: none;
+      background: var(--md-sys-color-surface-container);
+      color: var(--md-sys-color-on-surface-variant);
+      padding: 4px 10px;
+      border-radius: var(--md-shape-corner-full);
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+
+      &.active {
+        background: var(--md-sys-color-primary-container);
+        color: var(--md-sys-color-on-primary-container);
+      }
+    }
+  }
+
+  .graph-inspector-surface {
+    display: flex;
+    gap: 12px;
+    background: var(--md-sys-color-surface);
+    border-radius: var(--md-shape-corner-md);
+    padding: 12px;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    .code-preview {
+      flex: 1;
+      min-width: 0;
+      max-width: 100%;
+      font-size: 10px;
+      line-height: 1.4;
+      color: var(--md-sys-color-on-surface-variant);
+      max-height: 100px;
+      overflow-y: auto;
+      overflow-x: auto;
+
+      pre {
+        margin: 0;
+        max-width: 100%;
+      }
+    }
+
+    .node-hierarchy {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      justify-content: center;
+      flex-shrink: 0;
+
+      .ast-node {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px 8px;
+        background: var(--md-sys-color-surface-container-high);
+        border-radius: var(--md-shape-corner-sm);
+        font-size: 10px;
+        font-weight: 600;
+        color: var(--md-sys-color-primary);
+
+        .material-symbols-outlined {
+          font-size: 14px;
+        }
+
+        &.root {
+          background: var(--md-sys-color-primary);
+          color: var(--md-sys-color-on-primary);
+        }
+      }
+
+      .tree-line {
+        width: 2px;
+        height: 12px;
+        background: var(--md-sys-color-outline-variant);
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Card 3: AML Widget
+// ----------------------------------------------------
+.aml-preview-widget {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+
+  .search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--md-sys-color-surface);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    padding: 8px 12px;
+    border-radius: var(--md-shape-corner-full);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    .material-symbols-outlined {
+      font-size: 18px;
+      color: var(--md-sys-color-primary);
+      flex-shrink: 0;
+    }
+
+    .aml-search-field {
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 100%;
+      min-width: 0;
+      font-size: 12px;
+      color: var(--md-sys-color-on-surface);
+      font-family: var(--font-display);
+
+      &::placeholder {
+        color: var(--md-sys-color-outline);
+      }
+    }
+  }
+
+  .aml-records-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 125px;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    .record-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: var(--md-sys-color-surface);
+      border-radius: var(--md-shape-corner-sm);
+      border: 1px solid var(--md-sys-color-outline-ghost);
+      font-size: 11px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+
+      .record-info {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+
+        .record-entity {
+          font-weight: 600;
+          color: var(--md-sys-color-on-surface);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .record-type {
+          font-size: 9px;
+          color: var(--md-sys-color-on-surface-variant);
+        }
+      }
+
+      .risk-badge {
+        font-size: 10px;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: var(--md-shape-corner-full);
+        flex-shrink: 0;
+
+        &.low {
+          background: rgba(16, 185, 129, 0.15);
+          color: #10b981;
+        }
+
+        &.medium {
+          background: rgba(245, 158, 11, 0.15);
+          color: #f59e0b;
+        }
+
+        &.high {
+          background: rgba(239, 68, 68, 0.15);
+          color: #ef4444;
+        }
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------
+// Card 4: Sandbox Widget
+// ----------------------------------------------------
+.sandbox-widget {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  box-sizing: border-box;
+
+  .sandbox-control-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .waveform-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    border-radius: var(--md-shape-corner-md);
+    padding: 10px 12px;
+    border: 1px solid var(--md-sys-color-outline-ghost);
+
+    .slider-control {
+      margin-top: 6px;
+      width: 100%;
+      min-width: 0;
+
+      .m3-slider {
+        width: 100%;
+        accent-color: var(--md-sys-color-primary);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// Card Footer Tags
+.card-footer-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--md-sys-color-outline-ghost);
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+
+  .tag-pill {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--md-sys-color-primary);
+    background: var(--md-sys-color-surface-container-high);
+    padding: 3px 10px;
+    border-radius: var(--md-shape-corner-full);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Mobile Breakpoint (<= 768px)
+@media (max-width: 768px) {
+  .m3-bento-section {
+    padding: 36px 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    .section-badge {
+      font-size: 10px;
+      padding: 4px 10px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .section-subhead {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+
+  .bento-grid-container {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 16px !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  // Compact responsive controls inside preview surfaces
+  .treasury-preview-widget {
+    gap: 8px;
+
+    .treasury-nav-tabs .tab-pill {
+      min-height: 32px;
+      padding: 4px 10px;
+      font-size: 11px;
+    }
+
+    .treasury-display-card {
+      padding: 10px 12px;
+
+      .currency-tag {
+        font-size: 9px;
+        margin-bottom: 2px;
+      }
+
+      .amount-val {
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+
+      .telemetry-row {
+        font-size: 10px;
+      }
+    }
+  }
+
+  .nestview-preview-widget {
+    gap: 6px;
+
+    .format-switcher .format-pill {
+      min-height: 30px;
+      padding: 4px 8px;
+      font-size: 10px;
+    }
+
+    .graph-inspector-surface {
+      padding: 8px 10px;
+      gap: 8px;
+
+      .code-preview {
+        max-height: 75px;
+      }
+    }
+  }
+
+  .aml-preview-widget {
+    gap: 6px;
+
+    .search-input-wrapper {
+      min-height: 36px;
+      padding: 4px 10px;
+    }
+
+    .aml-records-list {
+      max-height: 85px;
+      gap: 4px;
+
+      .record-row {
+        padding: 5px 8px;
+        font-size: 10px;
+      }
+    }
+  }
+
+  .sandbox-widget {
+    gap: 8px;
+
+    .waveform-box {
+      padding: 8px 10px;
+
+      .slider-control {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .card-footer-tags {
+    padding-top: 10px;
+
+    .tag-pill {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+  }
+}

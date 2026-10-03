@@ -1,0 +1,113 @@
+<mat-sidenav-container class="portfolio-container" [hasBackdrop]="true">
+  <!-- M3 Expressive Drawer -->
+  <mat-sidenav
+    #drawer
+    mode="over"
+    [opened]="isDrawerOpen()"
+    (closed)="isDrawerOpen.set(false)"
+    class="m3-expressive-drawer"
+    aria-label="Site navigation"
+  >
+    <div class="drawer-inner-shell">
+      <!-- Personal Portfolio Navigation Links -->
+      <nav class="drawer-nav-list" role="navigation" aria-label="Mobile Navigation">
+        @for (item of navLinks; track item.id) {
+          <a
+            [href]="item.target"
+            [class.active]="activeSection() === item.id"
+            (click)="navigateTo(item.id, drawer, $event)"
+            class="drawer-pill-item"
+            matRipple
+            [attr.aria-current]="activeSection() === item.id ? 'page' : null"
+          >
+            <mat-icon class="item-icon">{{ item.icon }}</mat-icon>
+            <span class="item-title">{{ item.label }}</span>
+            @if (item.hasArrow) {
+              <mat-icon class="item-arrow">arrow_forward</mat-icon>
+            }
+          </a>
+        }
+      </nav>
+
+      <!-- Bottom Utilities -->
+      <div class="drawer-footer-controls">
+        <button
+          type="button"
+          class="drawer-capsule-button"
+          (click)="toggleAnimations()"
+          matRipple
+          [attr.aria-pressed]="animationsPaused()"
+        >
+          <mat-icon>{{ animationsPaused() ? 'play_arrow' : 'pause' }}</mat-icon>
+          <span>{{ animationsPaused() ? 'Resume animations' : 'Pause animations' }}</span>
+        </button>
+
+        <button
+          type="button"
+          class="drawer-capsule-button"
+          (click)="toggleTheme()"
+          matRipple
+          [attr.aria-pressed]="isDarkMode()"
+        >
+          <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+          <span>{{ isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode' }}</span>
+        </button>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="portfolio-content">
+    <!-- Sticky Top Header (Mobile Viewport <= 768px) -->
+    <header class="mobile-header-bar" role="banner">
+      <button
+        type="button"
+        class="header-icon-btn menu-toggle-btn"
+        (click)="drawer.toggle(); isDrawerOpen.set(drawer.opened)"
+        matRipple
+        aria-label="Toggle Navigation"
+        [attr.aria-expanded]="isDrawerOpen()"
+      >
+        <mat-icon>{{ isDrawerOpen() ? 'menu_open' : 'menu' }}</mat-icon>
+      </button>
+
+      <div
+        class="header-monogram"
+        (click)="navigateTo('home', drawer)"
+        role="button"
+        tabindex="0"
+        aria-label="Home"
+        matRipple
+      >
+        <span class="monogram-text">MS</span>
+      </div>
+
+      <a
+        href="#projects"
+        class="header-icon-btn"
+        (click)="navigateTo('projects', drawer, $event)"
+        aria-label="Search or Projects"
+        matRipple
+      >
+        <mat-icon>search</mat-icon>
+      </a>
+    </header>
+
+    <!-- Desktop Nav Rail & Content Viewport -->
+    <app-nav-rail
+      [activeSection]="activeSection()"
+      [isDark]="isDark()"
+      (sectionSelected)="navigateTo($event)"
+      (themeToggle)="toggleTheme()"
+    ></app-nav-rail>
+
+    <div class="content-viewport">
+      <main class="page-content" id="main-content">
+        <app-hero></app-hero>
+        <app-bento-grid></app-bento-grid>
+        <app-experience></app-experience>
+        <app-tech-stack></app-tech-stack>
+        <app-footer></app-footer>
+      </main>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

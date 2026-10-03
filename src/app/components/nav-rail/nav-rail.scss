@@ -1,0 +1,148 @@
+.m3-nav-rail {
+  width: 88px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--md-sys-color-surface-dim);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-right: 1px solid var(--md-sys-color-outline-ghost);
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background-color var(--md-duration-medium) var(--md-motion-spring),
+    border-color var(--md-duration-medium) var(--md-motion-spring);
+
+  .rail-header {
+    margin-bottom: 12px;
+  }
+
+  .rail-icon-btn {
+    background: transparent;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--md-shape-corner-full);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    color: var(--md-sys-color-on-surface-variant);
+    transition: background-color var(--md-duration-short) ease,
+      color var(--md-duration-short) ease,
+      transform var(--md-duration-short) var(--md-motion-spring);
+
+    &:hover {
+      background-color: var(--md-sys-color-surface-container-high);
+      color: var(--md-sys-color-primary);
+      transform: scale(1.05);
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .rail-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    align-items: center;
+    flex-grow: 1;
+    justify-content: center;
+  }
+
+  .rail-destination {
+    background: transparent;
+    border: none;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    gap: 4px;
+    position: relative;
+    outline: none;
+
+    .icon-indicator {
+      width: 56px;
+      height: 32px;
+      border-radius: var(--md-shape-corner-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--md-sys-color-on-surface-variant);
+      background-color: transparent;
+      transition: background-color var(--md-duration-short) var(--md-motion-spring),
+        color var(--md-duration-short) var(--md-motion-spring),
+        transform var(--md-duration-short) var(--md-motion-spring);
+
+      .material-symbols-outlined {
+        font-size: 22px;
+      }
+    }
+
+    .destination-label {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--md-sys-color-on-surface-variant);
+      letter-spacing: 0.15px;
+      font-family: var(--font-display);
+      transition: color var(--md-duration-short) ease,
+        font-weight var(--md-duration-short) ease;
+    }
+
+    &:hover:not(.active) {
+      .icon-indicator {
+        background-color: var(--md-sys-color-surface-container);
+        color: var(--md-sys-color-on-surface);
+      }
+      .destination-label {
+        color: var(--md-sys-color-on-surface);
+      }
+    }
+
+    &.active {
+      .icon-indicator {
+        background-color: var(--md-sys-color-primary-container);
+        color: var(--md-sys-color-on-primary-container);
+        transform: scale(1.04);
+      }
+
+      .destination-label {
+        color: var(--md-sys-color-on-surface);
+        font-weight: 700;
+      }
+    }
+
+    &:focus-visible {
+      .icon-indicator {
+        outline: 2px solid var(--md-sys-color-primary);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  .rail-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
+// Hide fixed rail on mobile screens <= 768px
+@media (max-width: 768px) {
+  :host {
+    display: none !important;
+  }
+
+  .m3-nav-rail {
+    display: none !important;
+  }
+}

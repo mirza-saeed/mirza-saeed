@@ -1,0 +1,16 @@
+<div class="waveform-wrapper">
+  <div class="waveform-header">
+    <span class="waveform-label">{{ label() }}</span>
+    <span class="waveform-percentage font-mono">{{ progress() }}%</span>
+  </div>
+  <div class="waveform-container">
+    <svg viewBox="0 0 200 40" class="waveform-svg" preserveAspectRatio="none">
+      <path class="track" d="M 10,20 Q 50,4 90,20 T 170,20 Q 185,28 195,20" />
+      <path
+        class="progress"
+        [style.strokeDashoffset]="dashOffset()"
+        d="M 10,20 Q 50,4 90,20 T 170,20 Q 185,28 195,20"
+      />
+    </svg>
+  </div>
+</div>
